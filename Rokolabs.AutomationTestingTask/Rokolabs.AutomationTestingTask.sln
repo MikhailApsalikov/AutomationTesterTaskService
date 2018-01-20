@@ -1,11 +1,53 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27004.2008
+VisualStudioVersion = 15.0.27130.2020
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Soap", "Soap", "{B09800D0-850D-4E36-B9B8-474F16FAE08C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Rest", "Rest", "{4CCB8D8B-629E-48E0-B9A9-52C4DA02E864}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Backend", "Backend", "{32DC801E-259A-4C0A-9596-4CA671110B6B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rokolabs.AutomationTestingTask.Entities", "Rokolabs.AutomationTestingTask.Entities\Rokolabs.AutomationTestingTask.Entities.csproj", "{1711BDAB-A57E-4C66-923B-45D64F311B20}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rokolabs.AutomationTestingTask.Repositories", "Rokolabs.AutomationTestingTask.Repositories\Rokolabs.AutomationTestingTask.Repositories.csproj", "{828A69B1-D6C3-49BF-ADC9-26F4F0B2E561}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rokolabs.AutomationTestingTask.Common", "Rokolabs.AutomationTestingTask.Common\Rokolabs.AutomationTestingTask.Common.csproj", "{B8864A4C-1077-4038-B4A0-0DAD72B32D2B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rokolabs.AutomationTestingTask.Soap", "Rokolabs.AutomationTestingTask.Soap\Rokolabs.AutomationTestingTask.Soap.csproj", "{25F609C9-69C1-49E0-B395-19B930A9595C}"
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1711BDAB-A57E-4C66-923B-45D64F311B20}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1711BDAB-A57E-4C66-923B-45D64F311B20}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1711BDAB-A57E-4C66-923B-45D64F311B20}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1711BDAB-A57E-4C66-923B-45D64F311B20}.Release|Any CPU.Build.0 = Release|Any CPU
+		{828A69B1-D6C3-49BF-ADC9-26F4F0B2E561}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{828A69B1-D6C3-49BF-ADC9-26F4F0B2E561}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{828A69B1-D6C3-49BF-ADC9-26F4F0B2E561}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{828A69B1-D6C3-49BF-ADC9-26F4F0B2E561}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B8864A4C-1077-4038-B4A0-0DAD72B32D2B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B8864A4C-1077-4038-B4A0-0DAD72B32D2B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B8864A4C-1077-4038-B4A0-0DAD72B32D2B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B8864A4C-1077-4038-B4A0-0DAD72B32D2B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{25F609C9-69C1-49E0-B395-19B930A9595C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{25F609C9-69C1-49E0-B395-19B930A9595C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{25F609C9-69C1-49E0-B395-19B930A9595C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{25F609C9-69C1-49E0-B395-19B930A9595C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{1711BDAB-A57E-4C66-923B-45D64F311B20} = {32DC801E-259A-4C0A-9596-4CA671110B6B}
+		{828A69B1-D6C3-49BF-ADC9-26F4F0B2E561} = {32DC801E-259A-4C0A-9596-4CA671110B6B}
+		{B8864A4C-1077-4038-B4A0-0DAD72B32D2B} = {32DC801E-259A-4C0A-9596-4CA671110B6B}
+		{25F609C9-69C1-49E0-B395-19B930A9595C} = {B09800D0-850D-4E36-B9B8-474F16FAE08C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {2FCF13EC-9DC0-4551-984F-359C1C9EC7DB}
