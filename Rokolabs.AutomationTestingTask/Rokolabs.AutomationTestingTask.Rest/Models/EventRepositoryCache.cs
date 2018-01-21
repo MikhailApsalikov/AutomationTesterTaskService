@@ -8,8 +8,6 @@ namespace Rokolabs.AutomationTestingTask.Rest.Models
 {
 	public class EventRepositoryCache
 	{
-		private const string AccountServiceAddress = "";
-
 		public static EventRepositoryCache Instance { get; set; } = new EventRepositoryCache();
 		private readonly Dictionary<Guid, EventRepository> repositories = new Dictionary<Guid, EventRepository>();
 

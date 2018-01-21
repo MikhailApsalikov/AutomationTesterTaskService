@@ -52,7 +52,7 @@ namespace Rokolabs.AutomationTestingTask.Repositories
 
 		public int Create(Event newEvent)
 		{
-			var id = events.Max(e => e.EventId);
+			int id = events.Max(e => e.EventId) + 1;
 			newEvent.EventId = id;
 			newEvent.Created = DateTime.Now;
 			events.Add(newEvent);

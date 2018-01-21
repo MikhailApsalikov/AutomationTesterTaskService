@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Web.Http;
 using Rokolabs.AutomationTestingTask.Common;
 using Rokolabs.AutomationTestingTask.Entities;
@@ -46,6 +47,11 @@ namespace Rokolabs.AutomationTestingTask.Rest.Controllers.v4
 		public IHttpActionResult Post(string sessionId, [FromBody] Event value)
 		{
 			var repository = EventRepositoryCache.Instance.Get(sessionId.ToGuidWithAccessDenied());
+			var validationResult = EventValidator.ValidateV4(value, false);
+			if (!string.IsNullOrWhiteSpace(validationResult))
+			{
+				return InternalServerError(new ArgumentException(validationResult));
+			}
 			var result = repository.Create(value);
 			return Ok(result);
 		}
@@ -54,6 +60,11 @@ namespace Rokolabs.AutomationTestingTask.Rest.Controllers.v4
 		public IHttpActionResult Put(int id, string sessionId, [FromBody] Event value)
 		{
 			var repository = EventRepositoryCache.Instance.Get(sessionId.ToGuidWithAccessDenied());
+			var validationResult = EventValidator.ValidateV4(value, false);
+			if (!string.IsNullOrWhiteSpace(validationResult))
+			{
+				return InternalServerError(new ArgumentException(validationResult));
+			}
 			var item = repository.GetById(id);
 			if (item == null || repository.IsInteraction(item))
 			{
