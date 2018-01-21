@@ -16,6 +16,10 @@ namespace Rokolabs.AutomationTestingTask.Soap
 		{
 			login.ThrowIfEmpty(nameof(login));
 			password.ThrowIfEmpty(nameof(password));
+			if (login.Length > 50) // Не исправленный баг 1
+			{
+				throw new ArgumentException("Login is incorrect");
+			}
 			var account = AccountRepository.Get(login, password);
 			account.SessionUserId = Guid.NewGuid();
 			AccountRepository.Update(account);
@@ -25,15 +29,7 @@ namespace Rokolabs.AutomationTestingTask.Soap
 		public bool Logout(string sessionId)
 		{
 			sessionId.ThrowIfEmpty(nameof(sessionId));
-			Guid guid;
-			try
-			{
-				guid = new Guid(sessionId);
-			}
-			catch (FormatException)
-			{
-				return false;
-			}
+			var guid = new Guid(sessionId);  // Вновь появившися баг 2 - нет обертки try-catch
 			var account = AccountRepository.Get(guid);
 			if (account == null)
 			{
@@ -127,6 +123,10 @@ namespace Rokolabs.AutomationTestingTask.Soap
 			result[3] = password.ToCharArray().Any(Char.IsUpper);
 			result[4] = password.ToCharArray().Any(c => c == '©');
 			var count = result.Count(s => s);
+			if (count == 2 && result[1] && result[2])
+			{
+				return; // Вновь появившися баг 1
+			}
 			if (count < 3)
 			{
 				throw new ArgumentException("Password should satisfy at least 3 conditions");
