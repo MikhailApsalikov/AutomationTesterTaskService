@@ -16,7 +16,7 @@ namespace Rokolabs.AutomationTestingTask.Soap
 		{
 			login.ThrowIfEmpty(nameof(login));
 			password.ThrowIfEmpty(nameof(password));
-			if (login.Length > 50) // Баг 1
+			if (login.Length > 50) // неисправленный баг 1
 			{
 				throw new ArgumentException("Login is incorrect");
 			}
@@ -29,15 +29,21 @@ namespace Rokolabs.AutomationTestingTask.Soap
 		public bool Logout(string sessionId)
 		{
 			sessionId.ThrowIfEmpty(nameof(sessionId));
-			var guid = new Guid(sessionId);  // Баг 2 - нет обертки try-catch
+			Guid guid;
+			try
+			{
+				guid = new Guid(sessionId);
+			}
+			catch (FormatException)
+			{
+				return false;
+			}
 			var account = AccountRepository.Get(guid);
 			if (account == null)
 			{
 				return false;
 			}
-			account.SessionUserId = null;
-			AccountRepository.Update(account);
-			return true;
+			return true; // новый баг 1
 		}
 
 		public AccountModel Registrate(string login, string password)
@@ -47,15 +53,10 @@ namespace Rokolabs.AutomationTestingTask.Soap
 			var oldAccount = AccountRepository.Get(login);
 			if (oldAccount != null)
 			{
-				return new AccountModel() // Баг 5 - "дыра в безопасности": если создаем пользователя существующим логином, то получаем доступ к паролю этого логина
-				{
-					Id = oldAccount.Id,
-					Login = oldAccount.Login,
-					Password = oldAccount.Password
-				};
+				throw new ArgumentException("Username is already used");
 			}
 			ValidateLogin(login);
-			ValidatePassword(password); // баги 3 и 4 внутри
+			ValidatePassword(password);
 			var account = new Account
 			{
 				Password = password,
@@ -71,15 +72,11 @@ namespace Rokolabs.AutomationTestingTask.Soap
 
 		public AccountModel GetUserBySessionId(string sessionId)
 		{
-			// sessionId.ThrowIfEmpty(nameof(sessionId));					баг 7
+			sessionId.ThrowIfEmpty(nameof(sessionId));
 			Guid guid;
 			try
 			{
 				guid = new Guid(sessionId);
-			}
-			catch (ArgumentNullException)
-			{
-				return null; // баг 7
 			}
 			catch (FormatException)
 			{
@@ -90,11 +87,7 @@ namespace Rokolabs.AutomationTestingTask.Soap
 
 			if (account == null)
 			{
-				return new AccountModel() // баг 6
-				{
-					Id = 105,
-					Login = "UserVasya"
-				};
+				return null;
 			}
 			return new AccountModel()
 			{
@@ -138,11 +131,7 @@ namespace Rokolabs.AutomationTestingTask.Soap
 			var count = result.Count(s => s);
 			if (count == 5)
 			{
-				throw new ArgumentException("Password should satisfy at least 3 conditions"); // баг 4
-			}
-			if (count == 2 && result[1] && result[2])
-			{
-				return; // баг 3
+				throw new ArgumentException("Password should satisfy at least 3 conditions"); // неисправленный баг 2
 			}
 			if (count < 3)
 			{

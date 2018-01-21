@@ -54,7 +54,7 @@ namespace Rokolabs.AutomationTestingTask.Soap
 				throw new ArgumentException("Username is already used");
 			}
 			ValidateLogin(login);
-			ValidatePassword(password); // баги 3 и 4 внутри
+			ValidatePassword(password);
 			var account = new Account
 			{
 				Password = password,
