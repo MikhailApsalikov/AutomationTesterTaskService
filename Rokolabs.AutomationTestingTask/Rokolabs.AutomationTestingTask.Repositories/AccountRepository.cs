@@ -19,6 +19,11 @@ namespace Rokolabs.AutomationTestingTask.Repositories
 			return result;
 		}
 
+		public bool CheckLoggedIn(Guid sessionId)
+		{
+			return DbContext.Accounts.Any(a => a.SessionUserId == sessionId);
+		}
+
 		public Account Get(Guid sessionId)
 		{
 			return DbContext.Accounts.FirstOrDefault(a => a.SessionUserId == sessionId);

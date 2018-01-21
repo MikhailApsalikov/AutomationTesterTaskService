@@ -8,7 +8,7 @@ namespace Rokolabs.AutomationTestingTask.Entities
 	{
 		public int EventId { get; set; }
 		//datetime
-		public DateTime StartDate { get; set; }
+		public DateTime Date { get; set; }
 		//string
 		public string Broker { get; set; }
 		//enum
@@ -22,15 +22,15 @@ namespace Rokolabs.AutomationTestingTask.Entities
 		// nested class with ID (List)
 		public List<Company> Companies { get; set; }
 		// nested account
-		public List<Account> InvestorAttendees { get; set; }
+		public List<User> InvestorAttendees { get; set; }
 		// array
-		public Account[] BrokerAttendees { get; set; }
+		public User[] BrokerAttendees { get; set; }
 		// int
 		public int Duration { get; set; }
 		public List<Sectors> Sectors { get; set; }
 		// flag enum
 		public AddressTypes AddressType { get; set; }
 		public DateTime Created { get; set; }
-		public DateTime Updated { get; set; }
+		public DateTime? Updated { get; set; }
 	}
 }

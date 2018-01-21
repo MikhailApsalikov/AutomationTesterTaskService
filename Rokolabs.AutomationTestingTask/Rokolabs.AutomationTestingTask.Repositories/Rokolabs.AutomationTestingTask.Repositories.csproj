@@ -49,6 +49,7 @@
   <ItemGroup>
     <Compile Include="AccountRepository.cs" />
     <Compile Include="Context\AutomationTaskDbContext.cs" />
+    <Compile Include="EventRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -47,8 +47,10 @@
     <Compile Include="Enums\MeetingTypes.cs" />
     <Compile Include="Enums\Sectors.cs" />
     <Compile Include="Event.cs" />
+    <Compile Include="Filters\EventFilter.cs" />
     <Compile Include="Location.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="User.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
