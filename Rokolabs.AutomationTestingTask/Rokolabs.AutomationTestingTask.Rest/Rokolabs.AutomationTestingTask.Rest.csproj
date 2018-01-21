@@ -183,6 +183,8 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\v2\EventV2Controller.cs" />
+    <Compile Include="Controllers\v2\InteractionV2Controller.cs" />
     <Compile Include="Controllers\v4\EventV4Controller.cs" />
     <Compile Include="Controllers\v4\InteractionV4Controller.cs" />
     <Compile Include="Global.asax.cs">
@@ -260,7 +262,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Controllers\v2\" />
     <Folder Include="Controllers\v3\" />
   </ItemGroup>
   <ItemGroup>

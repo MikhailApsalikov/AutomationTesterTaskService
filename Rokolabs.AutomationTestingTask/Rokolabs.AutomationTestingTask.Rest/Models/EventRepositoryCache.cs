@@ -20,7 +20,7 @@ namespace Rokolabs.AutomationTestingTask.Rest.Models
 		{
 			if (!CheckLoggedIn(sessionId))
 			{
-				throw new AuthenticationException("Invalid sessionId");
+				throw new AuthenticationException("Access is denied");
 			}
 			if (!repositories.ContainsKey(sessionId))
 			{
