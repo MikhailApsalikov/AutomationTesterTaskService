@@ -1,43 +1,77 @@
-﻿using System.Web.Caching;
+﻿using System.Linq;
 using System.Web.Http;
+using Rokolabs.AutomationTestingTask.Common;
 using Rokolabs.AutomationTestingTask.Entities;
-using Rokolabs.AutomationTestingTask.Entities.Filters;
+using Rokolabs.AutomationTestingTask.Rest.Models;
 
 namespace Rokolabs.AutomationTestingTask.Rest.Controllers.v4
 {
 	[Route("v4/Interaction")]
 	public class InteractionV4Controller : ApiController
 	{
-		
-
 		[HttpDelete]
-		public virtual IHttpActionResult Delete(int id, string sessionId)
+		public IHttpActionResult Delete(int id, string sessionId)
 		{
+			var repository = EventRepositoryCache.Instance.Get(sessionId.ToGuidWithAccessDenied());
+			var item = repository.GetById(id);
+			if (item == null || !repository.IsInteraction(item))
+			{
+				return NotFound();
+			}
+			repository.Delete(id);
 			return Ok();
 		}
 
 		[HttpGet]
-		public virtual IHttpActionResult Get(int id, string sessionId)
+		public IHttpActionResult Get(int id, string sessionId)
 		{
-			
-			return Ok();
+			var repository = EventRepositoryCache.Instance.Get(sessionId.ToGuidWithAccessDenied());
+			var item = repository.GetById(id);
+			if (item != null && repository.IsInteraction(item))
+			{
+				return Ok(item);
+			}
+			return NotFound();
 		}
 
 		[HttpGet]
-		public virtual IHttpActionResult Get(string sessionId, [FromUri]EventFilter query)
+		public IHttpActionResult Get(string sessionId)
 		{
-			return Ok();
+			var repository = EventRepositoryCache.Instance.Get(sessionId.ToGuidWithAccessDenied());
+			var items = repository.GetAll().Where(e => repository.IsInteraction(e));
+			return Ok(items);
 		}
 
 		[HttpPost]
-		public virtual IHttpActionResult Post(string sessionId, [FromBody] Event value)
+		public IHttpActionResult Post(string sessionId, [FromBody] Event value)
 		{
-			return Ok();
+			var repository = EventRepositoryCache.Instance.Get(sessionId.ToGuidWithAccessDenied());
+			var result = repository.Create(value);
+			return Ok(result);
 		}
 
 		[HttpPut]
-		public virtual IHttpActionResult Put(int id, string sessionId, [FromBody] Event value)
+		public IHttpActionResult Put(int id, string sessionId, [FromBody] Event value)
 		{
+			var repository = EventRepositoryCache.Instance.Get(sessionId.ToGuidWithAccessDenied());
+			var item = repository.GetById(id);
+			if (item == null || !repository.IsInteraction(item))
+			{
+				return NotFound();
+			}
+			item.Date = value.Date;
+			item.AddressType = value.AddressType;
+			item.Broker = value.Broker;
+			item.BrokerAttendees = value.BrokerAttendees;
+			item.Companies = value.Companies;
+			item.Duration = value.Duration;
+			item.InteractionType = value.InteractionType;
+			item.InvestorAttendees = value.InvestorAttendees;
+			item.Location = value.Location;
+			item.MeetingTypes = value.MeetingTypes;
+			item.Sectors = value.Sectors;
+			item.Title = value.Title;
+			repository.SetUpdated(item);
 			return Ok();
 		}
 	}

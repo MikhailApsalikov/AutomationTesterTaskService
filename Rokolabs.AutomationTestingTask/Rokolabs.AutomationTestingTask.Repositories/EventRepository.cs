@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Security.Cryptography;
+using Rokolabs.AutomationTestingTask.Common;
 using Rokolabs.AutomationTestingTask.Entities;
 using Rokolabs.AutomationTestingTask.Entities.Enums;
 using Rokolabs.AutomationTestingTask.Entities.Filters;
@@ -38,6 +40,11 @@ namespace Rokolabs.AutomationTestingTask.Repositories
 				.ToList();
 		}
 
+		public List<Event> GetAll()
+		{
+			return events;
+		}
+
 		public Event GetById(int id)
 		{
 			return events.FirstOrDefault(e => e.EventId == id);
@@ -62,75 +69,125 @@ namespace Rokolabs.AutomationTestingTask.Repositories
 			events = events.Where(e => e.EventId != id).ToList();
 		}
 
+		public bool IsInteraction(Event e)
+		{
+			return e.Date < DateTime.Now;
+		}
+
 		#region Initialization default data
 
 		private void InitEvents()
 		{
-			events.Add(new Event
+			List<Location> locations = new List<Location>
 			{
-				Location = new Location
+				new Location
 				{
 					Country = "Russia",
 					City = "Saratov"
 				},
-				AddressType = AddressTypes.Home,
-				Broker = "Rokolabs",
-				BrokerAttendees = new[]
+				new Location
 				{
-					new User
-					{
-						Id = 1000001,
-						Username = "Vasya"
-					},
-					new User
-					{
-						Id = 1000002,
-						Username = "Petya"
-					}
+					Country = "Russia",
+					City = "Samara"
 				},
-				Companies = new List<Company>
+				new Location
 				{
-					new Company
-					{
-						Id = 115,
-						Name = "Rokolabs",
-						Ticker = "ROKO"
-					}
-				},
-				Created = DateTime.Now.AddDays(-1),
-				Duration = 1000,
-				EventId = 1,
-				InteractionType = InteractionTypes.Conference,
-				InvestorAttendees = new List<User>
+					Country = "USA",
+					City = "New York"
+				}
+			};
+			List<User> usersPool = new List<User>
+			{
+				new User
 				{
-					new User
-					{
-						Id = 1000003,
-						Username = "Janetta"
-					},
-					new User
-					{
-						Id = 1000004,
-						Username = "John"
-					}
+					Id = 1000001,
+					Username = "Vasya"
 				},
-				MeetingTypes = new List<MeetingTypes>()
+				new User
 				{
-					MeetingTypes.Annotated,
-					MeetingTypes.Im,
-					MeetingTypes.OneByOne,
-					MeetingTypes.Survey
+					Id = 1000002,
+					Username = "Petya"
 				},
-				Sectors = new List<Sectors>()
+				new User
 				{
-					Sectors.Energy,
-					Sectors.InformationTechnology,
-					Sectors.Materials
+					Id = 1000003,
+					Username = "Janetta"
 				},
-				Date = DateTime.Now.AddDays(1),
-				Title = "Conference the first",
-				Updated = DateTime.Now
-			});
+				new User
+				{
+					Id = 1000004,
+					Username = "John"
+				},
+				new User
+				{
+					Id = 1000005,
+					Username = "Vovan"
+				},
+				new User
+				{
+					Id = 1000006,
+					Username = "Angelica"
+				},
+				new User
+				{
+					Id = 1000007,
+					Username = "Aleksandr"
+				},
+				new User
+				{
+					Id = 1000008,
+					Username = "Gertruda"
+				}
+			};
+			List<Company> companiesPool = new List<Company>()
+			{
+				new Company
+				{
+					Id = 115,
+					Name = "Rokolabs",
+					Ticker = "ROKO"
+				},
+				new Company
+				{
+					Id = 116,
+					Name = "Google Inc",
+					Ticker = "GGL"
+				},
+				new Company
+				{
+					Id = 117,
+					Name = "McDonalds",
+					Ticker = "MCDAC"
+				},
+				new Company
+				{
+					Id = 118,
+					Name = "Vector",
+					Ticker = "VCT"
+				}
+			};
+
+			for (int i = 0; i < 10; i++)
+			{
+				events.Add(new Event
+				{
+					Location = locations[i % locations.Count],
+					AddressType = (AddressTypes)(i % 4),
+					Broker = "Rokolabs",
+					BrokerAttendees = usersPool.Where(s => RandomGenerator.Instance.GenerateBool(0.3)).ToArray(),
+					Companies = companiesPool.Where(s => RandomGenerator.Instance.GenerateBool(0.5)).ToList(),
+					Created = DateTime.Now.AddDays(-i).AddHours(RandomGenerator.Instance.Generate(0, 17)),
+					Duration = RandomGenerator.Instance.Generate(0, 10000),
+					EventId = i + 1,
+					InteractionType = (InteractionTypes)(i % 7),
+					InvestorAttendees = usersPool.Where(s => RandomGenerator.Instance.GenerateBool(0.6)).ToList(),
+					MeetingTypes = Enum.GetValues(typeof(MeetingTypes)).Cast<MeetingTypes>().Where(s => RandomGenerator.Instance.GenerateBool(0.2)).ToList(),
+					Sectors = Enum.GetValues(typeof(Sectors)).Cast<Sectors>().Where(s => RandomGenerator.Instance.GenerateBool(0.3)).ToList(),
+					Date = DateTime.Now.AddDays(i - 5),
+					Title = $"Event {i + 1}",
+					Updated = DateTime.Now
+				});
+			}
 		}
 
 		#endregion
@@ -152,8 +209,8 @@ namespace Rokolabs.AutomationTestingTask.Repositories
 			switch (filterSortBy)
 			{
 				case "EventId":
-					return (filterSort == ListSortDirection.Ascending) ? 
-						eventList.OrderBy(e=>e.EventId) : 
+					return (filterSort == ListSortDirection.Ascending) ?
+						eventList.OrderBy(e => e.EventId) :
 						eventList.OrderByDescending(e => e.EventId);
 				case "Date":
 					return (filterSort == ListSortDirection.Ascending) ?

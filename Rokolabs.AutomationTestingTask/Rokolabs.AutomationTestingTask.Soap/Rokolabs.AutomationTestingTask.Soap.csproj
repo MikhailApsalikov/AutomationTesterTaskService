@@ -15,7 +15,7 @@
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <WcfConfigValidationEnabled>True</WcfConfigValidationEnabled>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
-    <UseIISExpress>true</UseIISExpress>
+    <UseIISExpress>false</UseIISExpress>
     <Use64BitIISExpress />
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
@@ -68,6 +68,7 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AccountService.svc" />
     <Content Include="AccountsV1.svc" />
     <Content Include="AccountsV2.svc" />
     <Content Include="AccountsV3.svc" />
@@ -75,6 +76,9 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AccountService.svc.cs">
+      <DependentUpon>AccountService.svc</DependentUpon>
+    </Compile>
     <Compile Include="AccountsV2.svc.cs">
       <DependentUpon>AccountsV2.svc</DependentUpon>
     </Compile>
@@ -84,6 +88,7 @@
     <Compile Include="AccountsV4.svc.cs">
       <DependentUpon>AccountsV4.svc</DependentUpon>
     </Compile>
+    <Compile Include="IAccount.cs" />
     <Compile Include="Models\AccountModel.cs" />
     <Compile Include="AccountsV1.svc.cs">
       <DependentUpon>AccountsV1.svc</DependentUpon>
@@ -132,7 +137,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>55507</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:55507/</IISUrl>
+          <IISUrl>http://soap-att.deejayentertainment.ru/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
@@ -142,6 +147,10 @@
       </FlavorProperties>
     </VisualStudio>
   </ProjectExtensions>
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

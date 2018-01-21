@@ -53,6 +53,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Rokolabs.AutomationTestingTask.Common\Rokolabs.AutomationTestingTask.Common.csproj">
+      <Project>{B8864A4C-1077-4038-B4A0-0DAD72B32D2B}</Project>
+      <Name>Rokolabs.AutomationTestingTask.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Rokolabs.AutomationTestingTask.Entities\Rokolabs.AutomationTestingTask.Entities.csproj">
       <Project>{1711bdab-a57e-4c66-923b-45d64f311b20}</Project>
       <Name>Rokolabs.AutomationTestingTask.Entities</Name>

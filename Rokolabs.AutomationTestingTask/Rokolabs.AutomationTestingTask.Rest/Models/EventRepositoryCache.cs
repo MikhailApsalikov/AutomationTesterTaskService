@@ -2,14 +2,16 @@
 using System.Collections.Generic;
 using System.Security.Authentication;
 using Rokolabs.AutomationTestingTask.Repositories;
+using Rokolabs.AutomationTestingTask.Rest.AccountService;
 
 namespace Rokolabs.AutomationTestingTask.Rest.Models
 {
 	public class EventRepositoryCache
 	{
-		public static EventRepositoryCache Instance { get; set; }
+		private const string AccountServiceAddress = "";
+
+		public static EventRepositoryCache Instance { get; set; } = new EventRepositoryCache();
 		private readonly Dictionary<Guid, EventRepository> repositories = new Dictionary<Guid, EventRepository>();
-		private AccountRepository AccountRepository { get; set; } = new AccountRepository();
 
 		private EventRepositoryCache()
 		{
@@ -18,7 +20,7 @@ namespace Rokolabs.AutomationTestingTask.Rest.Models
 
 		public EventRepository Get(Guid sessionId)
 		{
-			if (!AccountRepository.CheckLoggedIn(sessionId))
+			if (!CheckLoggedIn(sessionId))
 			{
 				throw new AuthenticationException("Invalid sessionId");
 			}
@@ -32,6 +34,12 @@ namespace Rokolabs.AutomationTestingTask.Rest.Models
 		public EventRepository BrokenGet()
 		{
 			return new EventRepository();
+		}
+
+		private bool CheckLoggedIn(Guid sessionId)
+		{
+			AccountServiceClient client = new AccountServiceClient();
+			return client.CheckLoggedIn(sessionId);
 		}
 	}
 }

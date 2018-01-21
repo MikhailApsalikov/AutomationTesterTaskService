@@ -53,6 +53,7 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -177,6 +178,11 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
+    <Compile Include="Connected Services\AccountService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Controllers\v4\EventV4Controller.cs" />
     <Compile Include="Controllers\v4\InteractionV4Controller.cs" />
     <Compile Include="Global.asax.cs">
@@ -187,6 +193,13 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\HelpPage\HelpPage.css" />
+    <None Include="Connected Services\AccountService\AccountService.disco" />
+    <None Include="Connected Services\AccountService\configuration91.svcinfo" />
+    <None Include="Connected Services\AccountService\configuration.svcinfo" />
+    <None Include="Connected Services\AccountService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="favicon.ico" />
@@ -216,6 +229,13 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="Connected Services\AccountService\AccountService.wsdl" />
+    <None Include="Connected Services\AccountService\AccountService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\AccountService\AccountService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -256,6 +276,10 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Rokolabs.AutomationTestingTask.Common\Rokolabs.AutomationTestingTask.Common.csproj">
+      <Project>{b8864a4c-1077-4038-b4a0-0dad72b32d2b}</Project>
+      <Name>Rokolabs.AutomationTestingTask.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Rokolabs.AutomationTestingTask.Entities\Rokolabs.AutomationTestingTask.Entities.csproj">
       <Project>{1711BDAB-A57E-4C66-923B-45D64F311B20}</Project>
       <Name>Rokolabs.AutomationTestingTask.Entities</Name>
@@ -264,6 +288,12 @@
       <Project>{828A69B1-D6C3-49BF-ADC9-26F4F0B2E561}</Project>
       <Name>Rokolabs.AutomationTestingTask.Repositories</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Connected Services\AccountService\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
