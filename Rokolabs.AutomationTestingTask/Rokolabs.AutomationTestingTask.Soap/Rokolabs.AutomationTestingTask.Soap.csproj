@@ -69,9 +69,21 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="AccountsV1.svc" />
+    <Content Include="AccountsV2.svc" />
+    <Content Include="AccountsV3.svc" />
+    <Content Include="AccountsV4.svc" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AccountsV2.svc.cs">
+      <DependentUpon>AccountsV2.svc</DependentUpon>
+    </Compile>
+    <Compile Include="AccountsV3.svc.cs">
+      <DependentUpon>AccountsV3.svc</DependentUpon>
+    </Compile>
+    <Compile Include="AccountsV4.svc.cs">
+      <DependentUpon>AccountsV4.svc</DependentUpon>
+    </Compile>
     <Compile Include="Models\AccountModel.cs" />
     <Compile Include="AccountsV1.svc.cs">
       <DependentUpon>AccountsV1.svc</DependentUpon>

@@ -1,0 +1,1 @@
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="Rokolabs.AutomationTestingTask.Soap.AccountsV2" CodeBehind="AccountsV2.svc.cs" %>
