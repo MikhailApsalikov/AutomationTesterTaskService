@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
-using System.Security.Cryptography;
 using Rokolabs.AutomationTestingTask.Common;
 using Rokolabs.AutomationTestingTask.Entities;
 using Rokolabs.AutomationTestingTask.Entities.Enums;
@@ -27,11 +25,6 @@ namespace Rokolabs.AutomationTestingTask.Repositories
 			{
 				result = result.Where(e =>
 					e.Location != null && (e.Location.City.Contains(filter.Location) || e.Location.Country.Contains(filter.Location)));
-			}
-
-			if (filter.Sort != null && string.IsNullOrWhiteSpace(filter.SortBy))
-			{
-				result = Sort(result, filter.Sort.Value, filter.SortBy);
 			}
 
 			return result
@@ -202,50 +195,6 @@ namespace Rokolabs.AutomationTestingTask.Repositories
 			{
 				filter.PageSize = 20;
 			}
-		}
-
-		private IEnumerable<Event> Sort(IEnumerable<Event> eventList, ListSortDirection filterSort, string filterSortBy)
-		{
-			switch (filterSortBy)
-			{
-				case "EventId":
-					return (filterSort == ListSortDirection.Ascending) ?
-						eventList.OrderBy(e => e.EventId) :
-						eventList.OrderByDescending(e => e.EventId);
-				case "Date":
-					return (filterSort == ListSortDirection.Ascending) ?
-						eventList.OrderBy(e => e.Date) :
-						eventList.OrderByDescending(e => e.Date);
-				case "Broker":
-					return (filterSort == ListSortDirection.Ascending) ?
-						eventList.OrderBy(e => e.Broker) :
-						eventList.OrderByDescending(e => e.Broker);
-				case "InteractionType":
-					return (filterSort == ListSortDirection.Ascending) ?
-						eventList.OrderBy(e => e.InteractionType) :
-						eventList.OrderByDescending(e => e.InteractionType);
-				case "Title":
-					return (filterSort == ListSortDirection.Ascending) ?
-						eventList.OrderBy(e => e.Title) :
-						eventList.OrderByDescending(e => e.Title);
-				case "Duration":
-					return (filterSort == ListSortDirection.Ascending) ?
-						eventList.OrderBy(e => e.Duration) :
-						eventList.OrderByDescending(e => e.Duration);
-				case "AddressType":
-					return (filterSort == ListSortDirection.Ascending) ?
-						eventList.OrderBy(e => e.AddressType) :
-						eventList.OrderByDescending(e => e.AddressType);
-				case "Created":
-					return (filterSort == ListSortDirection.Ascending) ?
-						eventList.OrderBy(e => e.Created) :
-						eventList.OrderByDescending(e => e.Created);
-				case "Updated":
-					return (filterSort == ListSortDirection.Ascending) ?
-						eventList.OrderBy(e => e.Updated) :
-						eventList.OrderByDescending(e => e.Updated);
-			}
-			return eventList;
 		}
 	}
 }

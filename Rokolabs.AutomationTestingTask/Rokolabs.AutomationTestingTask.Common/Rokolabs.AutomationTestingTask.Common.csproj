@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ArgumentGuard.cs" />
+    <Compile Include="DelayHelper.cs" />
     <Compile Include="GuidConverter.cs" />
     <Compile Include="RandomGenerator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

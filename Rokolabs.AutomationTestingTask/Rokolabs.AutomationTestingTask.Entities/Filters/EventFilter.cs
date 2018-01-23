@@ -1,14 +1,11 @@
 ﻿using System;
-using System.ComponentModel;
 using Rokolabs.AutomationTestingTask.Entities.Enums;
 
 namespace Rokolabs.AutomationTestingTask.Entities.Filters
 {
 	public class EventFilter
 	{
-		public string SortBy { get; set; }
-
-		public ListSortDirection? Sort { get; set; }
+		public GroupBy GroupBy { get; set; }
 
 		public DateTime DateFrom { get; set; }
 
