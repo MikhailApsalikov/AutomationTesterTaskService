@@ -48,7 +48,7 @@ namespace Rokolabs.AutomationTestingTask.Rest.Controllers.v3
 		public IHttpActionResult Get(string sessionId)
 		{
 			var repository = EventRepositoryCache.Instance.Get(sessionId.ToGuidWithAccessDenied());
-			var items = repository.GetAll().Where(e => repository.IsInteraction(e));
+			var items = repository.GetAll().Where(e => repository.IsInteraction(e)).Skip(1);
 			return Ok(items);
 		}
 
@@ -61,6 +61,7 @@ namespace Rokolabs.AutomationTestingTask.Rest.Controllers.v3
 			{
 				return InternalServerError(new ArgumentException(validationResult));
 			}
+			value.Title = "Fake interaction title";
 			var result = repository.Create(value);
 			return Ok(result);
 		}
