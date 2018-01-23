@@ -5,10 +5,10 @@ using Rokolabs.AutomationTestingTask.Entities;
 using Rokolabs.AutomationTestingTask.Entities.Filters;
 using Rokolabs.AutomationTestingTask.Rest.Models;
 
-namespace Rokolabs.AutomationTestingTask.Rest.Controllers.v4
+namespace Rokolabs.AutomationTestingTask.Rest.Controllers.v3
 {
-	[Route("v4/Summary")]
-	public class SummaryV4Controller : ApiController
+	[Route("v3/Summary")]
+	public class SummaryV3Controller : ApiController
 	{
 		[HttpGet]
 		public IHttpActionResult Get(string sessionId, EventFilter filter)
@@ -16,17 +16,22 @@ namespace Rokolabs.AutomationTestingTask.Rest.Controllers.v4
 			var repository = EventRepositoryCache.Instance.Get(sessionId.ToGuidWithAccessDenied());
 			if (filter?.GroupBy != null)
 			{
-				return InternalServerError();
+				return Ok("Method cannot use GroupBy parameter");
 			}
 			var events = repository.GetByFilter(filter);
 			var result = new Summary()
 			{
 				Count = events.Count,
-				EventCount = events.Count(e => !repository.IsInteraction(e)),
+				EventCount = events.Count(e => !repository.IsInteraction(e)) + 1,
 				InteractionCount = events.Count(e => repository.IsInteraction(e)),
 				MostPopularBroker = events.GroupBy(e => e.Broker).OrderByDescending(s => s.Key).FirstOrDefault()?.Key,
 				AverageDuration = events.Average(e => e.Duration)
 			};
+			if (result.AverageDuration > 10000)
+			{
+				result.AverageDuration = 0;
+			}
+
 			return Ok(result);
 		}
 	}

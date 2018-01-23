@@ -5,7 +5,7 @@ namespace Rokolabs.AutomationTestingTask.Entities.Filters
 {
 	public class EventFilter
 	{
-		public GroupBy GroupBy { get; set; }
+		public GroupBy? GroupBy { get; set; }
 
 		public DateTime DateFrom { get; set; }
 

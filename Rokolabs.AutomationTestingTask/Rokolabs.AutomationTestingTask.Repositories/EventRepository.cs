@@ -19,9 +19,9 @@ namespace Rokolabs.AutomationTestingTask.Repositories
 
 		public List<Event> GetByFilter(EventFilter filter)
 		{
-			NormalizeFilter(filter);
+			NormalizeFilter(ref filter); 
 			IEnumerable<Event> result = events;
-			if (string.IsNullOrWhiteSpace(filter.Location))
+			if (!string.IsNullOrWhiteSpace(filter.Location))
 			{
 				result = result.Where(e =>
 					e.Location != null && (e.Location.City.Contains(filter.Location) || e.Location.Country.Contains(filter.Location)));
@@ -185,8 +185,12 @@ namespace Rokolabs.AutomationTestingTask.Repositories
 
 		#endregion
 
-		private void NormalizeFilter(EventFilter filter)
+		private void NormalizeFilter(ref EventFilter filter)
 		{
+			if (filter == null)
+			{
+				filter = new EventFilter();
+			}
 			if (filter.Page == 0)
 			{
 				filter.Page = 1;

@@ -7,13 +7,13 @@ namespace Rokolabs.AutomationTestingTask.Soap
 	public interface IAccounts
 	{
 		[OperationContract]
-		string Login(string email, string password);
+		string Login(string login, string password);
 
 		[OperationContract]
 		bool Logout(string sessionId);
 
 		[OperationContract]
-		AccountModel Registrate(string email, string password);
+		AccountModel Registrate(string login, string password);
 
 		[OperationContract]
 		AccountModel GetUserBySessionId(string sessionId);

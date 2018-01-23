@@ -2,9 +2,9 @@
 {
 	public enum GroupBy
 	{
-		Broker,
-		InteractionType,
-		Location,
-		AddressType
+		Broker = 1,
+		InteractionType = 2,
+		Location = 3,
+		AddressType = 4
 	}
 }
