@@ -11,7 +11,7 @@ namespace Rokolabs.AutomationTestingTask.Common
 
 		public static void LongDelay()
 		{
-			Thread.Sleep(RandomGenerator.Instance.Generate(700, 1100));
+			Thread.Sleep(RandomGenerator.Instance.Generate(600, 1000));
 		}
 
 		public static void NormalDelay()

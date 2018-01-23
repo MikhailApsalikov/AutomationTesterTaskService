@@ -13,6 +13,7 @@ namespace Rokolabs.AutomationTestingTask.Rest.Controllers.v3
 		[HttpGet]
 		public IHttpActionResult Get(string sessionId, EventFilter filter)
 		{
+			DelayHelper.LongDelay();
 			var repository = EventRepositoryCache.Instance.Get(sessionId.ToGuidWithAccessDenied());
 			if (filter?.GroupBy != null)
 			{
