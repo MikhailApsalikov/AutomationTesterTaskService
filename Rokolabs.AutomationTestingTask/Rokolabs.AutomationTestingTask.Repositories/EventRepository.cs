@@ -211,7 +211,7 @@ namespace Rokolabs.AutomationTestingTask.Repositories
 					Created = DateTime.Now.AddDays(-i).AddHours(RandomGenerator.Instance.Generate(0, 17)),
 					Duration = RandomGenerator.Instance.Generate(0, 10000),
 					EventId = i + 1,
-					InteractionType = (InteractionTypes)(i % 7),
+					InteractionType = (InteractionTypes)(i % 7 + 1),
 					InvestorAttendees = usersPool.Where(s => RandomGenerator.Instance.GenerateBool(0.6)).ToList(),
 					MeetingTypes = Enum.GetValues(typeof(MeetingTypes)).Cast<MeetingTypes>().Where(s => RandomGenerator.Instance.GenerateBool(0.2)).ToList(),
 					Sectors = Enum.GetValues(typeof(Sectors)).Cast<Sectors>().Where(s => RandomGenerator.Instance.GenerateBool(0.3)).ToList(),
