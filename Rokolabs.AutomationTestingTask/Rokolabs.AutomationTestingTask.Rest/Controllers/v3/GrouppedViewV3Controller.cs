@@ -23,14 +23,7 @@ namespace Rokolabs.AutomationTestingTask.Rest.Controllers.v3
 				return InternalServerError(new ArgumentNullException("GroupBy"));
 			}
 			filter.Page = 0;
-			if (filter.PageSize == 0)
-			{
-				filter.PageSize = 10;
-			}
-			else
-			{
-				filter.PageSize = int.MaxValue;
-			}
+			filter.PageSize = filter.PageSize == 0 ? 10 : int.MaxValue;
 			var events = repository.GetByFilter(filter);
 			IEnumerable<EventGroup> result;
 			if (filter.Company != null)
