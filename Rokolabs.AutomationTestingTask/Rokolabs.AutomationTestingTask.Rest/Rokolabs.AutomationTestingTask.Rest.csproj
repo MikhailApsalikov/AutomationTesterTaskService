@@ -188,6 +188,7 @@
     <Compile Include="Controllers\v3\EventV3Controller.cs" />
     <Compile Include="Controllers\v3\GrouppedViewV3Controller.cs" />
     <Compile Include="Controllers\v3\InteractionV3Controller.cs" />
+    <Compile Include="Controllers\v3\ReportV3Controller.cs" />
     <Compile Include="Controllers\v3\SummaryV3Controller.cs" />
     <Compile Include="Controllers\v4\EventV4Controller.cs" />
     <Compile Include="Controllers\v4\ReportV4Controller.cs" />
