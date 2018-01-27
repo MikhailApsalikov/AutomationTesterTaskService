@@ -11,10 +11,10 @@ namespace Rokolabs.AutomationTestingTask.Rest.Controllers.v3
 	public class SummaryV3Controller : ApiController
 	{
 		[HttpGet]
-		public IHttpActionResult Get(string sessionId, EventFilter filter)
+		public IHttpActionResult Get([FromUri]EventFilter filter)
 		{
 			DelayHelper.LongDelay();
-			var repository = EventRepositoryCache.Instance.Get(sessionId.ToGuidWithAccessDenied());
+			var repository = EventRepositoryCache.Instance.Get(filter.SessionId.ToGuidWithAccessDenied());
 			if (filter?.GroupBy != null)
 			{
 				return Ok("Method cannot use GroupBy parameter");

@@ -19,12 +19,51 @@ namespace Rokolabs.AutomationTestingTask.Repositories
 
 		public List<Event> GetByFilter(EventFilter filter)
 		{
-			NormalizeFilter(ref filter); 
+			NormalizeFilter(ref filter);
 			IEnumerable<Event> result = events;
 			if (!string.IsNullOrWhiteSpace(filter.Location))
 			{
 				result = result.Where(e =>
-					e.Location != null && (e.Location.City.Contains(filter.Location) || e.Location.Country.Contains(filter.Location)));
+					e.Location != null && (e.Location.City.ToUpperInvariant().Contains(filter.Location.ToUpperInvariant())
+					|| e.Location.Country.ToUpperInvariant().Contains(filter.Location.ToUpperInvariant())));
+			}
+			if (filter.DateFrom.HasValue)
+			{
+				result = result.Where(e => e.Date > filter.DateFrom);
+			}
+			if (filter.DateTo.HasValue)
+			{
+				result = result.Where(e => e.Date < filter.DateTo);
+			}
+			if (!string.IsNullOrWhiteSpace(filter.Broker))
+			{
+				result = result.Where(e => e.Broker.ToUpperInvariant().Contains(filter.Broker.ToUpperInvariant()));
+			}
+			if (!string.IsNullOrWhiteSpace(filter.Title))
+			{
+				result = result.Where(e => e.Title.ToUpperInvariant().Contains(filter.Title.ToUpperInvariant()));
+			}
+			if (!string.IsNullOrWhiteSpace(filter.Company))
+			{
+				result = result.Where(e => e.Companies != null && e.Companies.Any(s => s.Name.ToUpperInvariant().Contains(filter.Company.ToUpperInvariant())));
+			}
+			if (filter.InteractionType.HasValue)
+			{
+				result = result.Where(e => e.InteractionType == filter.InteractionType);
+			}
+			if (filter.AddressType.HasValue)
+			{
+				result = result.Where(e => e.AddressType == filter.AddressType);
+			}
+			if (filter.MeetingTypes != null && filter.MeetingTypes.Any())
+			{
+				result = result.Where(e => e.MeetingTypes != null && e.MeetingTypes.Any(s => filter.MeetingTypes.Any(d => d == s)));
+			}
+			if (filter.IsInteraction.HasValue)
+			{
+				result = filter.IsInteraction.Value ? 
+					result.Where(IsInteraction) : 
+					result.Where(e => !IsInteraction(e));
 			}
 
 			return result
