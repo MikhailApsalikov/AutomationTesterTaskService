@@ -4,7 +4,6 @@ using Rokolabs.AutomationTestingTask.Entities.Enums;
 
 namespace Rokolabs.AutomationTestingTask.Entities
 {
-	[Serializable]
 	public class Event
 	{
 		public int EventId { get; set; }
