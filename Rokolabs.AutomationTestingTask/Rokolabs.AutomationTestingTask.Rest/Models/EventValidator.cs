@@ -6,7 +6,7 @@ namespace Rokolabs.AutomationTestingTask.Rest.Models
 {
 	public static class EventValidator
 	{
-		public static string ValidateV4(Event e, bool? isInteraction)
+		public static string ValidateCorrect(Event e, bool? isInteraction)
 		{
 			if (e.Duration < 0)
 			{

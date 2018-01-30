@@ -51,7 +51,7 @@ namespace Rokolabs.AutomationTestingTask.Rest.Controllers.v4
 		{
 			DelayHelper.NormalDelay();
 			var repository = EventRepositoryCache.Instance.Get(sessionId.ToGuidWithAccessDenied());
-			var validationResult = EventValidator.ValidateV4(value, false);
+			var validationResult = EventValidator.ValidateCorrect(value, false);
 			if (!string.IsNullOrWhiteSpace(validationResult))
 			{
 				return InternalServerError(new ArgumentException(validationResult));
@@ -65,7 +65,7 @@ namespace Rokolabs.AutomationTestingTask.Rest.Controllers.v4
 		{
 			DelayHelper.NormalDelay();
 			var repository = EventRepositoryCache.Instance.Get(sessionId.ToGuidWithAccessDenied());
-			var validationResult = EventValidator.ValidateV4(value, false);
+			var validationResult = EventValidator.ValidateCorrect(value, false);
 			if (!string.IsNullOrWhiteSpace(validationResult))
 			{
 				return InternalServerError(new ArgumentException(validationResult));

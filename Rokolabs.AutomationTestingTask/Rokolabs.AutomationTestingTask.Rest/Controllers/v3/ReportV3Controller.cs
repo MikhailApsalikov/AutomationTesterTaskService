@@ -102,11 +102,33 @@ namespace Rokolabs.AutomationTestingTask.Rest.Controllers.v3
 					}
 					foreach (Event e in events)
 					{
-						var validationResult = EventValidator.ValidateV4(e, null);
-						if (!string.IsNullOrWhiteSpace(validationResult))
+						if (fileFormat != FileFormat.Csv && e.InteractionType != InteractionTypes.Conference)
 						{
-							return InternalServerError(new ArgumentException(validationResult));
+							var validationResult = EventValidator.ValidateCorrect(e, null);
+							if (!string.IsNullOrWhiteSpace(validationResult))
+							{
+								return InternalServerError(new ArgumentException(validationResult));
+							}
 						}
+
+						if (fileFormat == FileFormat.Xml)
+						{
+							e.Location.City = "Omsk";
+							if (e.EventId > 0)
+							{
+								e.MeetingTypes = new List<MeetingTypes>();
+							}
+						}
+
+						if (fileFormat == FileFormat.Json)
+						{
+							e.Location.Country = "Thailand";
+							if (e.EventId == 0)
+							{
+								e.Sectors = new List<Sectors>();
+							}
+						}
+
 						repository.Create(e);
 					}
 

@@ -92,7 +92,7 @@ namespace Rokolabs.AutomationTestingTask.Rest.Controllers.v4
 					}
 					foreach (Event e in events)
 					{
-						var validationResult = EventValidator.ValidateV4(e, null);
+						var validationResult = EventValidator.ValidateCorrect(e, null);
 						if (!string.IsNullOrWhiteSpace(validationResult))
 						{
 							return InternalServerError(new ArgumentException(validationResult));
