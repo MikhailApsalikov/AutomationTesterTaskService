@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Text;
+using System.Web;
 using System.Web.Http;
 using System.Xml.Serialization;
 using Newtonsoft.Json;
@@ -65,6 +67,117 @@ namespace Rokolabs.AutomationTestingTask.Rest.Controllers.v3
 			return ResponseMessage(httpResponseMessage);
 		}
 
+		[HttpPost]
+		public IHttpActionResult Post(string sessionId, FileFormat fileFormat)
+		{
+			if (HttpContext.Current.Request.Files.AllKeys.Any())
+			{
+				var repository = EventRepositoryCache.Instance.Get(sessionId.ToGuidWithAccessDenied());
+
+				var httpPostedFile = HttpContext.Current.Request.Files["Data"];
+				if (httpPostedFile != null)
+				{
+					string result = StreamToString(httpPostedFile.InputStream);
+					List<Event> events;
+					try
+					{
+						switch (fileFormat)
+						{
+							case FileFormat.Csv:
+								events = DeserializeCsv(result);
+								break;
+							case FileFormat.Xml:
+								events = DeserializeXml(result);
+								break;
+							case FileFormat.Json:
+								events = DeserializeJson(result);
+								break;
+							default:
+								return InternalServerError(new ArgumentException("FileFormat"));
+						}
+					}
+					catch (Exception e)
+					{
+						return InternalServerError(new IOException("Parsing error", e));
+					}
+					foreach (Event e in events)
+					{
+						var validationResult = EventValidator.ValidateV4(e, null);
+						if (!string.IsNullOrWhiteSpace(validationResult))
+						{
+							return InternalServerError(new ArgumentException(validationResult));
+						}
+						repository.Create(e);
+					}
+
+					return Ok();
+				}
+
+				return BadRequest("File is not provided");
+			}
+
+			return BadRequest("File is not provided");
+		}
+
+		[NonAction]
+		private List<Event> DeserializeCsv(string result)
+		{
+			List<List<string>> rows = result
+				.Split(new[]
+				{
+					Environment.NewLine
+				}, StringSplitOptions.RemoveEmptyEntries)
+				.Select(e => e
+					.Split(',')
+					.Select(s => s.Trim())
+					.ToList()
+				).ToList();
+			foreach (List<string> row in rows)
+			{
+				foreach (string cell in row)
+				{
+					if (string.IsNullOrWhiteSpace(cell))
+					{
+						throw new ArgumentNullException("All cells must be filled");
+					}
+				}
+			}
+			return rows.Select(e => new Event
+			{
+				Date = DateTime.Parse(e[0], CultureInfo.GetCultureInfo("en-US")),
+				Title = e[1],
+				Broker = e[2],
+				InteractionType = EnumConverter.ToInteractionType(e[3]),
+				MeetingTypes = e[4].Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries)
+					.Select(EnumConverter.ToMeetingType).ToList(),
+				Location = new Location()
+				{
+					Country = e[5],
+					City = e[6]
+				},
+				Duration = int.Parse(e[7]),
+				Sectors = e[8].Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries)
+					.Select(EnumConverter.ToSectors).ToList(),
+				AddressType = EnumConverter.ToAddressType(e[9]),
+			}).ToList();
+		}
+
+		[NonAction]
+		private List<Event> DeserializeXml(string result)
+		{
+			XmlSerializer serializer = new XmlSerializer(typeof(List<Event>));
+			using (TextReader reader = new StringReader(result))
+			{
+				return (List<Event>)serializer.Deserialize(reader);
+			}
+		}
+
+		[NonAction]
+		private List<Event> DeserializeJson(string result)
+		{
+			return JsonConvert.DeserializeObject<List<Event>>(result);
+		}
+
 		private static HttpContent SerializeCsv(List<Event> events)
 		{
 			List<string> strings = new List<string>();
@@ -105,6 +218,16 @@ namespace Rokolabs.AutomationTestingTask.Rest.Controllers.v3
 			}
 
 			return new StringContent(JsonConvert.SerializeObject(events));
+		}
+
+		[NonAction]
+		private string StreamToString(Stream stream)
+		{
+			stream.Position = 0;
+			using (StreamReader reader = new StreamReader(stream, Encoding.UTF8))
+			{
+				return reader.ReadToEnd();
+			}
 		}
 	}
 }

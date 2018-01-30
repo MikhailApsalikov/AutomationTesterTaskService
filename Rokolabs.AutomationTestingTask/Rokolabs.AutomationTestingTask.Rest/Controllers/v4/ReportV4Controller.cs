@@ -90,9 +90,13 @@ namespace Rokolabs.AutomationTestingTask.Rest.Controllers.v4
 					{
 						return InternalServerError(new IOException("Parsing error", e));
 					}
-					//валидация
 					foreach (Event e in events)
 					{
+						var validationResult = EventValidator.ValidateV4(e, null);
+						if (!string.IsNullOrWhiteSpace(validationResult))
+						{
+							return InternalServerError(new ArgumentException(validationResult));
+						}
 						repository.Create(e);
 					}
 

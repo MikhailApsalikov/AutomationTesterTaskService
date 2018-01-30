@@ -6,7 +6,7 @@ namespace Rokolabs.AutomationTestingTask.Rest.Models
 {
 	public static class EventValidator
 	{
-		public static string ValidateV4(Event e, bool isInteraction)
+		public static string ValidateV4(Event e, bool? isInteraction)
 		{
 			if (e.Duration < 0)
 			{
@@ -40,13 +40,16 @@ namespace Rokolabs.AutomationTestingTask.Rest.Models
 			{
 				return "Location cannot be empty";
 			}
-			if (e.Date < DateTime.Now && !isInteraction)
+			if (isInteraction.HasValue)
 			{
-				return "Event cannot have date in the past. Please, create an Interaction";
-			}
-			if (e.Date > DateTime.Now && isInteraction)
-			{
-				return "Interaction cannot have date in the future. Please, create an Event";
+				if (e.Date < DateTime.Now && !isInteraction.Value)
+				{
+					return "Event cannot have date in the past. Please, create an Interaction";
+				}
+				if (e.Date > DateTime.Now && isInteraction.Value)
+				{
+					return "Interaction cannot have date in the future. Please, create an Event";
+				}
 			}
 			return string.Empty;
 		}
@@ -129,7 +132,7 @@ namespace Rokolabs.AutomationTestingTask.Rest.Models
 			return string.Empty;
 		}
 
-		public static string ValidateV3Create(Event e, bool isInteraction)
+		public static string ValidateV3Create(Event e, bool? isInteraction)
 		{
 			if (e.Duration < 1)
 			{
@@ -163,13 +166,16 @@ namespace Rokolabs.AutomationTestingTask.Rest.Models
 			{
 				return "Location cannot be empty";
 			}
-			if (e.Date < DateTime.Now && !isInteraction)
+			if (isInteraction.HasValue)
 			{
-				return "Event cannot have date in the past. Please, create an Interaction";
-			}
-			if (e.Date > DateTime.Now && isInteraction)
-			{
-				return "Interaction cannot have date in the future. Please, create an Event";
+				if (e.Date < DateTime.Now && !isInteraction.Value)
+				{
+					return "Event cannot have date in the past. Please, create an Interaction";
+				}
+				if (e.Date > DateTime.Now && isInteraction.Value)
+				{
+					return "Interaction cannot have date in the future. Please, create an Event";
+				}
 			}
 			return string.Empty;
 		}
