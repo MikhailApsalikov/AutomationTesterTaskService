@@ -4,7 +4,7 @@
 		"Broker": "Rokolabs",
 		"InteractionType": 1,
 		"MeetingTypes": [ 1, 2, 3, 4, 5, 6, 8, 9, 10, 11, 12, 13, 14, 15 ],
-		"Title": "Event number 1",
+		"Title": "eventnumberone",
 		"Location": {
 			"Country": "Russia",
 			"City": "Saratov"
@@ -62,7 +62,7 @@
 		"Broker": "Rokolabs",
 		"InteractionType": 2,
 		"MeetingTypes": [ 1, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15 ],
-		"Title": "Event number 2",
+		"Title": "eventnumbertwo",
 		"Location": {
 			"Country": "Russia",
 			"City": "Samara"
@@ -131,7 +131,7 @@
 		"Broker": "Rokolabs",
 		"InteractionType": 3,
 		"MeetingTypes": [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 15 ],
-		"Title": "Event number 3",
+		"Title": "eventnumberthree",
 		"Location": {
 			"Country": "USA",
 			"City": "New York"
@@ -213,7 +213,7 @@
 		"Broker": "Rokolabs",
 		"InteractionType": 4,
 		"MeetingTypes": [ 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15 ],
-		"Title": "Event number 4",
+		"Title": "eventnumberfour",
 		"Location": {
 			"Country": "Russia",
 			"City": "Saratov"
@@ -270,7 +270,7 @@
 		"Broker": "Rokolabs",
 		"InteractionType": 5,
 		"MeetingTypes": [ 1, 3, 4, 5, 6, 7, 8, 9, 10, 12, 13, 14 ],
-		"Title": "Event number 5",
+		"Title": "eventnumberfive",
 		"Location": {
 			"Country": "Russia",
 			"City": "Samara"
@@ -328,7 +328,7 @@
 		"Broker": "Rokolabs",
 		"InteractionType": 6,
 		"MeetingTypes": [ 2, 3, 4, 5, 6, 7, 9, 10, 11, 13, 14, 15 ],
-		"Title": "Event number 6",
+		"Title": "eventnumbersix",
 		"Location": {
 			"Country": "USA",
 			"City": "New York"
@@ -390,7 +390,7 @@
 		"Broker": "Rokolabs",
 		"InteractionType": 7,
 		"MeetingTypes": [ 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14 ],
-		"Title": "Event number 7",
+		"Title": "eventnumberseven",
 		"Location": {
 			"Country": "Russia",
 			"City": "Saratov"
@@ -456,7 +456,7 @@
 		"Broker": "Rokolabs",
 		"InteractionType": 1,
 		"MeetingTypes": [ 2, 4, 6, 7, 8, 9, 10, 12, 13, 14, 15 ],
-		"Title": "Event number 8",
+		"Title": "eventnumbereight",
 		"Location": {
 			"Country": "Russia",
 			"City": "Samara"
@@ -518,7 +518,7 @@
 		"Broker": "Rokolabs",
 		"InteractionType": 2,
 		"MeetingTypes": [ 1, 2, 3, 4, 6, 8, 9, 10, 11, 12, 13, 15 ],
-		"Title": "Event number 9",
+		"Title": "eventnumbernine",
 		"Location": {
 			"Country": "USA",
 			"City": "New York"
@@ -568,7 +568,7 @@
 		"Broker": "Rokolabs",
 		"InteractionType": 3,
 		"MeetingTypes": [ 1, 2, 3, 6, 7, 8, 9, 10, 11, 12, 14, 15 ],
-		"Title": "Event number 10",
+		"Title": "eventnumberten",
 		"Location": {
 			"Country": "Russia",
 			"City": "Saratov"

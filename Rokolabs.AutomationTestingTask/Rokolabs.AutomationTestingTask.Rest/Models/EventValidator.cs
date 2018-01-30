@@ -20,7 +20,7 @@ namespace Rokolabs.AutomationTestingTask.Rest.Models
 			{
 				return "Title cannot have less than 12 symbols";
 			}
-			if (e.Title.ToCharArray().All(Char.IsLower))
+			if (!e.Title.ToCharArray().All(Char.IsLower))
 			{
 				return "Title can contain only lower letters";
 			}
@@ -68,7 +68,7 @@ namespace Rokolabs.AutomationTestingTask.Rest.Models
 			{
 				return "Title cannot have less than 12 symbols";
 			}
-			if (e.Title.ToCharArray().All(Char.IsLower))
+			if (!e.Title.ToCharArray().All(Char.IsLower))
 			{
 				return "Title can contain only lower letters";
 			}
@@ -109,7 +109,7 @@ namespace Rokolabs.AutomationTestingTask.Rest.Models
 			{
 				return "Title cannot have less than 24 symbols";
 			}
-			if (e.Title.ToCharArray().All(Char.IsLower))
+			if (!e.Title.ToCharArray().All(Char.IsLower))
 			{
 				return "Title can contain only lower letters";
 			}
@@ -146,7 +146,7 @@ namespace Rokolabs.AutomationTestingTask.Rest.Models
 			{
 				return "Title cannot have less than 12 symbols";
 			}
-			if (e.Title.ToCharArray().All(Char.IsLower))
+			if (!e.Title.ToCharArray().All(Char.IsLower))
 			{
 				return "Title can contain only lower letters";
 			}
@@ -194,7 +194,7 @@ namespace Rokolabs.AutomationTestingTask.Rest.Models
 			{
 				return "Title cannot have less than 24 symbols";
 			}
-			if (e.Title.ToCharArray().All(Char.IsLower))
+			if (!e.Title.ToCharArray().All(Char.IsLower))
 			{
 				return "Title can contain only lower letters";
 			}

@@ -21,7 +21,7 @@
       <MeetingTypes>Na</MeetingTypes>
       <MeetingTypes>Other</MeetingTypes>
     </MeetingTypes>
-    <Title>Event number 1</Title>
+    <Title>eventnumberone</Title>
     <Location>
       <Country>Russia</Country>
       <City>Saratov</City>
@@ -103,7 +103,7 @@
       <MeetingTypes>Na</MeetingTypes>
       <MeetingTypes>Other</MeetingTypes>
     </MeetingTypes>
-    <Title>Event number 2</Title>
+    <Title>eventnumbertwo</Title>
     <Location>
       <Country>Russia</Country>
       <City>Samara</City>
@@ -200,7 +200,7 @@
       <MeetingTypes>VoiceMail</MeetingTypes>
       <MeetingTypes>Other</MeetingTypes>
     </MeetingTypes>
-    <Title>Event number 3</Title>
+    <Title>eventnumberthree</Title>
     <Location>
       <Country>USA</Country>
       <City>New York</City>
@@ -310,7 +310,7 @@
       <MeetingTypes>Na</MeetingTypes>
       <MeetingTypes>Other</MeetingTypes>
     </MeetingTypes>
-    <Title>Event number 4</Title>
+    <Title>eventnumberfour</Title>
     <Location>
       <Country>Russia</Country>
       <City>Saratov</City>
@@ -390,7 +390,7 @@
       <MeetingTypes>VoiceMail</MeetingTypes>
       <MeetingTypes>Na</MeetingTypes>
     </MeetingTypes>
-    <Title>Event number 5</Title>
+    <Title>eventnumberfive</Title>
     <Location>
       <Country>Russia</Country>
       <City>Samara</City>
@@ -473,7 +473,7 @@
       <MeetingTypes>Na</MeetingTypes>
       <MeetingTypes>Other</MeetingTypes>
     </MeetingTypes>
-    <Title>Event number 6</Title>
+    <Title>eventnumbersix</Title>
     <Location>
       <Country>USA</Country>
       <City>New York</City>
@@ -561,7 +561,7 @@
       <MeetingTypes>VoiceMail</MeetingTypes>
       <MeetingTypes>Na</MeetingTypes>
     </MeetingTypes>
-    <Title>Event number 7</Title>
+    <Title>eventnumberseven</Title>
     <Location>
       <Country>Russia</Country>
       <City>Saratov</City>
@@ -652,7 +652,7 @@
       <MeetingTypes>Na</MeetingTypes>
       <MeetingTypes>Other</MeetingTypes>
     </MeetingTypes>
-    <Title>Event number 8</Title>
+    <Title>eventnumbereight</Title>
     <Location>
       <Country>Russia</Country>
       <City>Samara</City>
@@ -737,7 +737,7 @@
       <MeetingTypes>VoiceMail</MeetingTypes>
       <MeetingTypes>Other</MeetingTypes>
     </MeetingTypes>
-    <Title>Event number 9</Title>
+    <Title>eventnumbernine</Title>
     <Location>
       <Country>USA</Country>
       <City>New York</City>
@@ -811,7 +811,7 @@
       <MeetingTypes>Na</MeetingTypes>
       <MeetingTypes>Other</MeetingTypes>
     </MeetingTypes>
-    <Title>Event number 10</Title>
+    <Title>eventnumberten</Title>
     <Location>
       <Country>Russia</Country>
       <City>Saratov</City>
