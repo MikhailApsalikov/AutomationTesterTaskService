@@ -30,7 +30,7 @@ namespace Rokolabs.AutomationTestingTask.Rest.Controllers.v3
 				return InternalServerError();
 			}
 			List<Event> events = repository.GetByFilter(filter);
-			if (filter.IsInteraction.HasValue && filter.IsInteraction.Value && filter.FileFormat == FileFormat.Json) 
+			if (filter.IsInteraction.HasValue && filter.IsInteraction.Value && filter.FileFormat == FileFormat.Json)
 			{
 				events.AddRange(repository.GetByFilter(filter));
 			}
@@ -206,18 +206,19 @@ namespace Rokolabs.AutomationTestingTask.Rest.Controllers.v3
 			strings.Add("\"ID\", Date, Title, Interaction type, Meeting type, Country, City, Duration, Sectors, Address Type, Created, Updated");
 			strings.AddRange(events.Select(e => string.Join(", ", new[]
 			 {
-				e.EventId.ToString(),
-				e.Date.AddDays(-3).ToString("MM/dd/yyyy"),
-				e.Title.ToString(),
-				e.InteractionType.ToString(),
-				string.Join(" ", e.MeetingTypes).ToString(),
-				e?.Location?.Country.ToString(),
-				e?.Location?.City.ToString(),
-				e.Duration.ToString(),
-				string.Join(" ", e.Sectors).ToString(),
-				e.AddressType.ToString(),
-				e?.Created.ToString("MM/dd/yyyy"),
-				e?.Updated?.ToString("MM/dd/yyyy"),
+				 e.EventId.ToString(),
+				 e.Date.AddDays(-3).ToString("MM/dd/yyyy"),
+				 e.Title,
+				 e.Broker,
+				 e.InteractionType != 0 ? e.InteractionType.ToString() : null,
+				 string.Join(" ", e.MeetingTypes ?? new List<MeetingTypes>()).ToString(),
+				 e?.Location?.Country?.ToString(),
+				 e?.Location?.City?.ToString(),
+				 e.Duration.ToString(),
+				 string.Join(" ", e.Sectors ?? new List<Sectors>()).ToString(),
+				 e.AddressType.ToString(),
+				 e?.Created.ToString("MM/dd/yyyy"),
+				 e?.Updated?.ToString("MM/dd/yyyy")
 			})));
 			return new StringContent(string.Join(Environment.NewLine, strings));
 		}
