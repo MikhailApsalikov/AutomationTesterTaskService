@@ -50,6 +50,7 @@
     <Compile Include="Enums\Sectors.cs" />
     <Compile Include="Event.cs" />
     <Compile Include="EventGroup.cs" />
+    <Compile Include="EventList.cs" />
     <Compile Include="Filters\BaseEventFilter.cs" />
     <Compile Include="Location.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

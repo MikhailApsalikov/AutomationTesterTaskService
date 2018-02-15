@@ -43,7 +43,7 @@ namespace Rokolabs.AutomationTestingTask.Rest.Controllers.v4
 			DelayHelper.NormalDelay();
 			var repository = EventRepositoryCache.Instance.Get(sessionId.ToGuidWithAccessDenied());
 			var items = repository.GetAll().Where(e => repository.IsInteraction(e));
-			return Ok(items);
+			return Ok(new EventList(items));
 		}
 
 		[HttpPost]
