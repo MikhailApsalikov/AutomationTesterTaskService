@@ -24,7 +24,7 @@ namespace Rokolabs.AutomationTestingTask.Entities
 		// nested account
 		public List<User> InvestorAttendees { get; set; }
 		// array
-		public User[] BrokerAttendees { get; set; }
+		public List<User> BrokerAttendees { get; set; }
 		// int
 		public int Duration { get; set; }
 		public List<Sectors> Sectors { get; set; }
