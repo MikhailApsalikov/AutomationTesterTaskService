@@ -45,7 +45,7 @@ namespace Rokolabs.AutomationTestingTask.Rest.Controllers.v2
 			{
 				repository = EventRepositoryCache.Instance.Get(sessionId.ToGuidWithAccessDenied());
 				var items = repository.GetAll().Where(e => !repository.IsInteraction(e));
-				return Ok(new EventList(items));
+				return Ok(new EventList(items.ToList()));
 			}
 			catch (AccessViolationException)
 			{
