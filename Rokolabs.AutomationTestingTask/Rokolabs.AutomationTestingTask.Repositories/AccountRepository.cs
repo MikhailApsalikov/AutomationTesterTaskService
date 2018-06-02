@@ -43,7 +43,7 @@ namespace Rokolabs.AutomationTestingTask.Repositories
 			}
 			if (account.Password != password)
 			{
-				throw new SecurityException("Incorrect password");
+				throw new ArgumentException("Incorrect password");
 			}
 			return account;
 		}

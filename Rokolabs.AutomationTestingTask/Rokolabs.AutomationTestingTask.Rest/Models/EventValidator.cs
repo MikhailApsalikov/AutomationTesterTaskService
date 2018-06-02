@@ -92,6 +92,10 @@ namespace Rokolabs.AutomationTestingTask.Rest.Models
 			{
 				return "Event cannot have date in the past. Please, create an Interaction";
 			}
+			if (e.Date > DateTime.Now && isInteraction)
+			{
+				return "Interaction cannot have date in the future. Please, create an Event";
+			}
 			return string.Empty;
 		}
 
@@ -113,9 +117,17 @@ namespace Rokolabs.AutomationTestingTask.Rest.Models
 			{
 				return "Title can contain only lower letters";
 			}
-			if (e.Location == null)
+			if (string.IsNullOrWhiteSpace(e.Broker))
 			{
-				return "Location cannot be null";
+				return "Broker cannot be empty";
+			}
+			if (e.Broker.Length > 50)
+			{
+				return "Broker cannot have more than 50 symbols";
+			}
+			if (string.IsNullOrWhiteSpace(e.Location.City) && string.IsNullOrWhiteSpace(e.Location.Country))
+			{
+				return "Location cannot be empty";
 			}
 			if (string.IsNullOrWhiteSpace(e.Location.Country))
 			{

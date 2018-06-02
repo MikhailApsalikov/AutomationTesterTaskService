@@ -206,7 +206,7 @@ namespace Rokolabs.AutomationTestingTask.Repositories
 					Location = locations[i % locations.Count],
 					AddressType = (AddressTypes)(i % 4),
 					Broker = "Rokolabs",
-					BrokerAttendees = usersPool.Where(s => RandomGenerator.Instance.GenerateBool(0.3)).ToArray(),
+					BrokerAttendees = usersPool.Where(s => RandomGenerator.Instance.GenerateBool(0.3)).ToList(),
 					Companies = companiesPool.Where(s => RandomGenerator.Instance.GenerateBool(0.5)).ToList(),
 					Created = DateTime.Now.AddDays(-i).AddHours(RandomGenerator.Instance.Generate(0, 17)),
 					Duration = RandomGenerator.Instance.Generate(0, 10000),

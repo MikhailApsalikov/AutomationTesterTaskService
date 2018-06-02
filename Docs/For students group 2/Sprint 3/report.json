@@ -1,0 +1,654 @@
+[
+	{
+		"Date": "2018-01-24T22:57:39.4173449+04:00",
+		"Broker": "Rokolabs",
+		"InteractionType": 1,
+		"MeetingTypes": [ 1, 2, 3, 4, 5, 6, 8, 9, 10, 11, 12, 13, 14, 15 ],
+		"Title": "eventnumberone",
+		"Location": {
+			"Country": "Russia",
+			"City": "Saratov"
+		},
+		"Companies": [
+			{
+				"Id": 115,
+				"Name": "Rokolabs",
+				"Ticker": "ROKO"
+			},
+			{
+				"Id": 116,
+				"Name": "Google Inc",
+				"Ticker": "GGL"
+			}
+		],
+		"InvestorAttendees": [
+			{
+				"Id": 1000004,
+				"Username": "John"
+			},
+			{
+				"Id": 1000006,
+				"Username": "Angelica"
+			},
+			{
+				"Id": 1000007,
+				"Username": "Aleksandr"
+			}
+		],
+		"BrokerAttendees": [
+			{
+				"Id": 1000004,
+				"Username": "John"
+			},
+			{
+				"Id": 1000005,
+				"Username": "Vovan"
+			},
+			{
+				"Id": 1000006,
+				"Username": "Angelica"
+			},
+			{
+				"Id": 1000008,
+				"Username": "Gertruda"
+			}
+		],
+		"Duration": 6711,
+		"Sectors": [ 2, 3, 7, 8, 9 ],
+		"AddressType": 0
+	},
+	{
+		"Date": "2018-01-25T22:57:39.4178464+04:00",
+		"Broker": "Rokolabs",
+		"InteractionType": 2,
+		"MeetingTypes": [ 1, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15 ],
+		"Title": "eventnumbertwo",
+		"Location": {
+			"Country": "Russia",
+			"City": "Samara"
+		},
+		"Companies": [
+			{
+				"Id": 115,
+				"Name": "Rokolabs",
+				"Ticker": "ROKO"
+			}
+		],
+		"InvestorAttendees": [
+			{
+				"Id": 1000001,
+				"Username": "Vasya"
+			},
+			{
+				"Id": 1000002,
+				"Username": "Petya"
+			},
+			{
+				"Id": 1000003,
+				"Username": "Janetta"
+			},
+			{
+				"Id": 1000007,
+				"Username": "Aleksandr"
+			}
+		],
+		"BrokerAttendees": [
+			{
+				"Id": 1000001,
+				"Username": "Vasya"
+			},
+			{
+				"Id": 1000002,
+				"Username": "Petya"
+			},
+			{
+				"Id": 1000003,
+				"Username": "Janetta"
+			},
+			{
+				"Id": 1000005,
+				"Username": "Vovan"
+			},
+			{
+				"Id": 1000006,
+				"Username": "Angelica"
+			},
+			{
+				"Id": 1000007,
+				"Username": "Aleksandr"
+			},
+			{
+				"Id": 1000008,
+				"Username": "Gertruda"
+			}
+		],
+		"Duration": 4681,
+		"Sectors": [ 1, 2, 3, 4, 6, 7, 8, 10, 11 ],
+		"AddressType": 1
+	},
+	{
+		"Date": "2018-01-26T22:57:39.4178464+04:00",
+		"Broker": "Rokolabs",
+		"InteractionType": 3,
+		"MeetingTypes": [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 15 ],
+		"Title": "eventnumberthree",
+		"Location": {
+			"Country": "USA",
+			"City": "New York"
+		},
+		"Companies": [
+			{
+				"Id": 115,
+				"Name": "Rokolabs",
+				"Ticker": "ROKO"
+			},
+			{
+				"Id": 117,
+				"Name": "McDonalds",
+				"Ticker": "MCDAC"
+			}
+		],
+		"InvestorAttendees": [
+			{
+				"Id": 1000002,
+				"Username": "Petya"
+			},
+			{
+				"Id": 1000003,
+				"Username": "Janetta"
+			},
+			{
+				"Id": 1000004,
+				"Username": "John"
+			},
+			{
+				"Id": 1000005,
+				"Username": "Vovan"
+			},
+			{
+				"Id": 1000008,
+				"Username": "Gertruda"
+			}
+		],
+		"BrokerAttendees": [
+			{
+				"Id": 1000001,
+				"Username": "Vasya"
+			},
+			{
+				"Id": 1000002,
+				"Username": "Petya"
+			},
+			{
+				"Id": 1000003,
+				"Username": "Janetta"
+			},
+			{
+				"Id": 1000004,
+				"Username": "John"
+			},
+			{
+				"Id": 1000005,
+				"Username": "Vovan"
+			},
+			{
+				"Id": 1000006,
+				"Username": "Angelica"
+			},
+			{
+				"Id": 1000007,
+				"Username": "Aleksandr"
+			},
+			{
+				"Id": 1000008,
+				"Username": "Gertruda"
+			}
+		],
+		"Duration": 615,
+		"Sectors": [ 1, 2, 3, 4, 5, 6, 8, 10, 11, 12 ],
+		"AddressType": 2
+	},
+	{
+		"Date": "2018-01-27T22:57:39.4178464+04:00",
+		"Broker": "Rokolabs",
+		"InteractionType": 4,
+		"MeetingTypes": [ 1, 2, 3, 4, 5, 6, 7, 10, 11, 12, 13, 14, 15 ],
+		"Title": "eventnumberfour",
+		"Location": {
+			"Country": "Russia",
+			"City": "Saratov"
+		},
+		"Companies": [
+			{
+				"Id": 118,
+				"Name": "Vector",
+				"Ticker": "VCT"
+			}
+		],
+		"InvestorAttendees": [
+			{
+				"Id": 1000003,
+				"Username": "Janetta"
+			},
+			{
+				"Id": 1000005,
+				"Username": "Vovan"
+			}
+		],
+		"BrokerAttendees": [
+			{
+				"Id": 1000002,
+				"Username": "Petya"
+			},
+			{
+				"Id": 1000004,
+				"Username": "John"
+			},
+			{
+				"Id": 1000005,
+				"Username": "Vovan"
+			},
+			{
+				"Id": 1000006,
+				"Username": "Angelica"
+			},
+			{
+				"Id": 1000007,
+				"Username": "Aleksandr"
+			},
+			{
+				"Id": 1000008,
+				"Username": "Gertruda"
+			}
+		],
+		"Duration": 958,
+		"Sectors": [ 3, 5, 6, 7, 9, 11 ],
+		"AddressType": 3
+	},
+	{
+		"Date": "2018-01-28T22:57:39.4178464+04:00",
+		"Broker": "Rokolabs",
+		"InteractionType": 5,
+		"MeetingTypes": [ 1, 3, 4, 5, 6, 7, 8, 9, 10, 12, 13, 14 ],
+		"Title": "eventnumberfive",
+		"Location": {
+			"Country": "Russia",
+			"City": "Samara"
+		},
+		"Companies": [
+			{
+				"Id": 115,
+				"Name": "Rokolabs",
+				"Ticker": "ROKO"
+			},
+			{
+				"Id": 118,
+				"Name": "Vector",
+				"Ticker": "VCT"
+			}
+		],
+		"InvestorAttendees": [
+			{
+				"Id": 1000004,
+				"Username": "John"
+			}
+		],
+		"BrokerAttendees": [
+			{
+				"Id": 1000001,
+				"Username": "Vasya"
+			},
+			{
+				"Id": 1000003,
+				"Username": "Janetta"
+			},
+			{
+				"Id": 1000004,
+				"Username": "John"
+			},
+			{
+				"Id": 1000005,
+				"Username": "Vovan"
+			},
+			{
+				"Id": 1000006,
+				"Username": "Angelica"
+			},
+			{
+				"Id": 1000007,
+				"Username": "Aleksandr"
+			}
+		],
+		"Duration": 93,
+		"Sectors": [ 1, 4, 5, 6, 7, 9, 11, 12 ],
+		"AddressType": 0
+	},
+	{
+		"Date": "2018-01-29T22:57:39.4178464+04:00",
+		"Broker": "Rokolabs",
+		"InteractionType": 6,
+		"MeetingTypes": [ 2, 3, 4, 5, 6, 7, 9, 10, 11, 13, 14, 15 ],
+		"Title": "eventnumbersix",
+		"Location": {
+			"Country": "USA",
+			"City": "New York"
+		},
+		"Companies": [
+			{
+				"Id": 115,
+				"Name": "Rokolabs",
+				"Ticker": "ROKO"
+			},
+			{
+				"Id": 117,
+				"Name": "McDonalds",
+				"Ticker": "MCDAC"
+			}
+		],
+		"InvestorAttendees": [
+			{
+				"Id": 1000002,
+				"Username": "Petya"
+			},
+			{
+				"Id": 1000004,
+				"Username": "John"
+			},
+			{
+				"Id": 1000005,
+				"Username": "Vovan"
+			}
+		],
+		"BrokerAttendees": [
+			{
+				"Id": 1000002,
+				"Username": "Petya"
+			},
+			{
+				"Id": 1000004,
+				"Username": "John"
+			},
+			{
+				"Id": 1000006,
+				"Username": "Angelica"
+			},
+			{
+				"Id": 1000007,
+				"Username": "Aleksandr"
+			},
+			{
+				"Id": 1000008,
+				"Username": "Gertruda"
+			}
+		],
+		"Duration": 7415,
+		"Sectors": [ 1, 3, 4, 5, 6, 10, 11, 12 ],
+		"AddressType": 1
+	},
+	{
+		"Date": "2018-01-30T22:57:39.4178464+04:00",
+		"Broker": "Rokolabs",
+		"InteractionType": 7,
+		"MeetingTypes": [ 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14 ],
+		"Title": "eventnumberseven",
+		"Location": {
+			"Country": "Russia",
+			"City": "Saratov"
+		},
+		"Companies": [
+			{
+				"Id": 115,
+				"Name": "Rokolabs",
+				"Ticker": "ROKO"
+			},
+			{
+				"Id": 117,
+				"Name": "McDonalds",
+				"Ticker": "MCDAC"
+			}
+		],
+		"InvestorAttendees": [
+			{
+				"Id": 1000001,
+				"Username": "Vasya"
+			},
+			{
+				"Id": 1000005,
+				"Username": "Vovan"
+			}
+		],
+		"BrokerAttendees": [
+			{
+				"Id": 1000001,
+				"Username": "Vasya"
+			},
+			{
+				"Id": 1000002,
+				"Username": "Petya"
+			},
+			{
+				"Id": 1000003,
+				"Username": "Janetta"
+			},
+			{
+				"Id": 1000004,
+				"Username": "John"
+			},
+			{
+				"Id": 1000005,
+				"Username": "Vovan"
+			},
+			{
+				"Id": 1000007,
+				"Username": "Aleksandr"
+			},
+			{
+				"Id": 1000008,
+				"Username": "Gertruda"
+			}
+		],
+		"Duration": 908,
+		"Sectors": [ 3, 4, 6, 7, 8, 9, 10, 11, 12 ],
+		"AddressType": 2
+	},
+	{
+		"Date": "2018-01-31T22:57:39.4178464+04:00",
+		"Broker": "Rokolabs",
+		"InteractionType": 1,
+		"MeetingTypes": [ 2, 4, 6, 7, 8, 9, 10, 12, 13, 14, 15 ],
+		"Title": "eventnumbereight",
+		"Location": {
+			"Country": "Russia",
+			"City": "Samara"
+		},
+		"Companies": [
+			{
+				"Id": 115,
+				"Name": "Rokolabs",
+				"Ticker": "ROKO"
+			},
+			{
+				"Id": 117,
+				"Name": "McDonalds",
+				"Ticker": "MCDAC"
+			},
+			{
+				"Id": 118,
+				"Name": "Vector",
+				"Ticker": "VCT"
+			}
+		],
+		"InvestorAttendees": [],
+		"BrokerAttendees": [
+			{
+				"Id": 1000001,
+				"Username": "Vasya"
+			},
+			{
+				"Id": 1000002,
+				"Username": "Petya"
+			},
+			{
+				"Id": 1000003,
+				"Username": "Janetta"
+			},
+			{
+				"Id": 1000004,
+				"Username": "John"
+			},
+			{
+				"Id": 1000005,
+				"Username": "Vovan"
+			},
+			{
+				"Id": 1000007,
+				"Username": "Aleksandr"
+			},
+			{
+				"Id": 1000008,
+				"Username": "Gertruda"
+			}
+		],
+		"Duration": 5260,
+		"Sectors": [ 1, 2, 3, 10, 11, 12 ],
+		"AddressType": 3
+	},
+	{
+		"Date": "2018-02-01T22:57:39.4178464+04:00",
+		"Broker": "Rokolabs",
+		"InteractionType": 2,
+		"MeetingTypes": [ 1, 2, 3, 4, 6, 8, 9, 10, 11, 12, 13, 15 ],
+		"Title": "eventnumbernine",
+		"Location": {
+			"Country": "USA",
+			"City": "New York"
+		},
+		"Companies": [
+			{
+				"Id": 116,
+				"Name": "Google Inc",
+				"Ticker": "GGL"
+			},
+			{
+				"Id": 118,
+				"Name": "Vector",
+				"Ticker": "VCT"
+			}
+		],
+		"InvestorAttendees": [
+			{
+				"Id": 1000007,
+				"Username": "Aleksandr"
+			}
+		],
+		"BrokerAttendees": [
+			{
+				"Id": 1000001,
+				"Username": "Vasya"
+			},
+			{
+				"Id": 1000002,
+				"Username": "Petya"
+			},
+			{
+				"Id": 1000006,
+				"Username": "Angelica"
+			},
+			{
+				"Id": 1000008,
+				"Username": "Gertruda"
+			}
+		],
+		"Duration": 6010,
+		"Sectors": [ 5, 6, 7, 9, 10, 11, 12 ],
+		"AddressType": 0
+	},
+	{
+		"Date": "2018-02-02T22:57:39.4178464+04:00",
+		"Broker": "Rokolabs",
+		"InteractionType": 3,
+		"MeetingTypes": [ 1, 2, 3, 6, 7, 8, 9, 10, 11, 12, 14, 15 ],
+		"Title": "eventnumberten",
+		"Location": {
+			"Country": "Russia",
+			"City": "Saratov"
+		},
+		"Companies": [
+			{
+				"Id": 115,
+				"Name": "Rokolabs",
+				"Ticker": "ROKO"
+			},
+			{
+				"Id": 116,
+				"Name": "Google Inc",
+				"Ticker": "GGL"
+			},
+			{
+				"Id": 117,
+				"Name": "McDonalds",
+				"Ticker": "MCDAC"
+			},
+			{
+				"Id": 118,
+				"Name": "Vector",
+				"Ticker": "VCT"
+			}
+		],
+		"InvestorAttendees": [
+			{
+				"Id": 1000001,
+				"Username": "Vasya"
+			},
+			{
+				"Id": 1000002,
+				"Username": "Petya"
+			},
+			{
+				"Id": 1000003,
+				"Username": "Janetta"
+			},
+			{
+				"Id": 1000006,
+				"Username": "Angelica"
+			}
+		],
+		"BrokerAttendees": [
+			{
+				"Id": 1000001,
+				"Username": "Vasya"
+			},
+			{
+				"Id": 1000002,
+				"Username": "Petya"
+			},
+			{
+				"Id": 1000003,
+				"Username": "Janetta"
+			},
+			{
+				"Id": 1000004,
+				"Username": "John"
+			},
+			{
+				"Id": 1000005,
+				"Username": "Vovan"
+			},
+			{
+				"Id": 1000006,
+				"Username": "Angelica"
+			},
+			{
+				"Id": 1000007,
+				"Username": "Aleksandr"
+			},
+			{
+				"Id": 1000008,
+				"Username": "Gertruda"
+			}
+		],
+		"Duration": 7723,
+		"Sectors": [ 2, 3, 4, 7, 9, 11, 12 ],
+		"AddressType": 1
+	}
+]

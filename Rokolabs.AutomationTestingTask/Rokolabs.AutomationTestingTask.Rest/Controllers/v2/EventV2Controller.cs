@@ -29,7 +29,7 @@ namespace Rokolabs.AutomationTestingTask.Rest.Controllers.v2
 		public IHttpActionResult Get(int id, string sessionId)
 		{
 			var repository = EventRepositoryCache.Instance.Get(sessionId.ToGuidWithAccessDenied());
-			var item = repository.GetAll().FirstOrDefault();
+			var item = repository.GetById(id);
 			if (item != null && !repository.IsInteraction(item))
 			{
 				return Ok(item);
@@ -40,18 +40,9 @@ namespace Rokolabs.AutomationTestingTask.Rest.Controllers.v2
 		[HttpGet]
 		public IHttpActionResult Get(string sessionId)
 		{
-			EventRepository repository;
-			try
-			{
-				repository = EventRepositoryCache.Instance.Get(sessionId.ToGuidWithAccessDenied());
-				var items = repository.GetAll().Where(e => !repository.IsInteraction(e));
-				return Ok(new EventList(items.ToList()));
-			}
-			catch (AccessViolationException)
-			{
-				repository = EventRepositoryCache.Instance.BrokenGet();
-			}
-			return Ok();
+			var repository = EventRepositoryCache.Instance.Get(sessionId.ToGuidWithAccessDenied());
+			var items = repository.GetAll().Where(e => !repository.IsInteraction(e));
+			return Ok(new EventList(items.ToList()));
 		}
 
 		[HttpPost]
@@ -65,10 +56,6 @@ namespace Rokolabs.AutomationTestingTask.Rest.Controllers.v2
 			}
 			value.InteractionType = InteractionTypes.Conference;
 			var result = repository.Create(value);
-			if (result % 5 == 0)
-			{
-				return Ok(result * 7);
-			}
 			return Ok(result);
 		}
 
