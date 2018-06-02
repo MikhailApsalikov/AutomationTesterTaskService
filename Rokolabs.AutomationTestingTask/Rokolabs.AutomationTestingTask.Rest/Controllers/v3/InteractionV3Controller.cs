@@ -14,31 +14,20 @@ namespace Rokolabs.AutomationTestingTask.Rest.Controllers.v3
 		[HttpDelete]
 		public IHttpActionResult Delete(int id, string sessionId)
 		{
-			DelayHelper.NormalDelay();
 			var repository = EventRepositoryCache.Instance.Get(sessionId.ToGuidWithAccessDenied());
 			var item = repository.GetById(id);
 			if (item == null || !repository.IsInteraction(item))
 			{
-				return InternalServerError();
+				return NotFound();
 			}
 			repository.Delete(id);
-			DelayHelper.UnacceptableLongDelay();
 			return Ok();
 		}
 
 		[HttpGet]
 		public IHttpActionResult Get(int id, string sessionId)
 		{
-			DelayHelper.NormalDelay();
-			EventRepository repository;
-			try
-			{
-				repository = EventRepositoryCache.Instance.Get(sessionId.ToGuidWithAccessDenied());
-			}
-			catch (AccessViolationException)
-			{
-				repository = EventRepositoryCache.Instance.BrokenGet();
-			}
+			var repository = EventRepositoryCache.Instance.Get(sessionId.ToGuidWithAccessDenied());
 			var item = repository.GetById(id);
 			if (item != null && repository.IsInteraction(item))
 			{
@@ -50,16 +39,14 @@ namespace Rokolabs.AutomationTestingTask.Rest.Controllers.v3
 		[HttpGet]
 		public IHttpActionResult Get(string sessionId)
 		{
-			DelayHelper.NormalDelay();
 			var repository = EventRepositoryCache.Instance.Get(sessionId.ToGuidWithAccessDenied());
-			var items = repository.GetAll().Where(e => repository.IsInteraction(e)).Skip(1);
+			var items = repository.GetAll().Where(e => repository.IsInteraction(e));
 			return Ok(new EventList(items.ToList()));
 		}
 
 		[HttpPost]
 		public IHttpActionResult Post(string sessionId, [FromBody] Event value)
 		{
-			DelayHelper.NormalDelay();
 			var repository = EventRepositoryCache.Instance.Get(sessionId.ToGuidWithAccessDenied());
 			var validationResult = EventValidator.ValidateV3Create(value, true);
 			if (!string.IsNullOrWhiteSpace(validationResult))
@@ -74,7 +61,6 @@ namespace Rokolabs.AutomationTestingTask.Rest.Controllers.v3
 		[HttpPut]
 		public IHttpActionResult Put(int id, string sessionId, [FromBody] Event value)
 		{
-			DelayHelper.NormalDelay();
 			var repository = EventRepositoryCache.Instance.Get(sessionId.ToGuidWithAccessDenied());
 			var validationResult = EventValidator.ValidateV3Update(value, true);
 			if (!string.IsNullOrWhiteSpace(validationResult))

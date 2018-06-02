@@ -114,19 +114,11 @@ namespace Rokolabs.AutomationTestingTask.Rest.Controllers.v3
 						if (fileFormat == FileFormat.Xml)
 						{
 							e.Location.City = "Omsk";
-							if (e.EventId > 0)
-							{
-								e.MeetingTypes = new List<MeetingTypes>();
-							}
 						}
 
 						if (fileFormat == FileFormat.Json)
 						{
 							e.Location.Country = "Thailand";
-							if (e.EventId == 0)
-							{
-								e.Sectors = new List<Sectors>();
-							}
 						}
 
 						repository.Create(e);

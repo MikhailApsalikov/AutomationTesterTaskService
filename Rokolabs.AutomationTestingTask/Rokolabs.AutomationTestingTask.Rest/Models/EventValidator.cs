@@ -146,7 +146,7 @@ namespace Rokolabs.AutomationTestingTask.Rest.Models
 
 		public static string ValidateV3Create(Event e, bool? isInteraction)
 		{
-			if (e.Duration < 1)
+			if (e.Duration < 0)
 			{
 				return "Duration cannot be negative";
 			}

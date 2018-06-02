@@ -16,7 +16,6 @@ namespace Rokolabs.AutomationTestingTask.Rest.Controllers.v3
 		[HttpGet]
 		public IHttpActionResult Get([FromUri]EventFilter filter)
 		{
-			DelayHelper.LongDelay();
 			var repository = EventRepositoryCache.Instance.Get(filter.SessionId.ToGuidWithAccessDenied());
 			if (filter.GroupBy == null)
 			{
@@ -26,10 +25,6 @@ namespace Rokolabs.AutomationTestingTask.Rest.Controllers.v3
 			filter.PageSize = filter.PageSize == 0 ? 10 : int.MaxValue;
 			var events = repository.GetByFilter(filter);
 			IEnumerable<EventGroup> result;
-			if (filter.Company != null)
-			{
-				DelayHelper.UnacceptableLongDelay();
-			}
 			switch (filter.GroupBy)
 			{
 				case GroupBy.AddressType:

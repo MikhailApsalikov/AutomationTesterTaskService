@@ -13,11 +13,10 @@ namespace Rokolabs.AutomationTestingTask.Rest.Controllers.v3
 		[HttpGet]
 		public IHttpActionResult Get([FromUri]EventFilter filter)
 		{
-			DelayHelper.LongDelay();
 			var repository = EventRepositoryCache.Instance.Get(filter.SessionId.ToGuidWithAccessDenied());
 			if (filter?.GroupBy != null)
 			{
-				return Ok("Method cannot use GroupBy parameter");
+				return InternalServerError();
 			}
 			var events = repository.GetByFilter(filter);
 			var result = new Summary()
@@ -25,13 +24,9 @@ namespace Rokolabs.AutomationTestingTask.Rest.Controllers.v3
 				Count = events.Count,
 				EventCount = events.Count(e => !repository.IsInteraction(e)) + 1,
 				InteractionCount = events.Count(e => repository.IsInteraction(e)),
-				MostPopularBroker = events.GroupBy(e => e.Broker).OrderByDescending(s => s.Key).FirstOrDefault()?.Key,
-				AverageDuration = events.Average(e => e.Duration)
+				MostPopularBroker = events.Any() ? events.GroupBy(e => e.Broker).OrderByDescending(s => s.Key).FirstOrDefault()?.Key : null,
+				AverageDuration = events.Any() ? events.Average(e => e.Duration) : 0
 			};
-			if (result.AverageDuration > 10000)
-			{
-				result.AverageDuration = 0;
-			}
 
 			return Ok(result);
 		}

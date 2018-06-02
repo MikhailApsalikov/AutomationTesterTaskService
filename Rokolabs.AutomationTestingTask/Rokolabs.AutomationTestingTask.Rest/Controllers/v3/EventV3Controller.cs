@@ -14,7 +14,6 @@ namespace Rokolabs.AutomationTestingTask.Rest.Controllers.v3
 		[HttpDelete]
 		public IHttpActionResult Delete(int id, string sessionId)
 		{
-			DelayHelper.NormalDelay();
 			var repository = EventRepositoryCache.Instance.Get(sessionId.ToGuidWithAccessDenied());
 			var item = repository.GetById(id);
 			if (item == null || repository.IsInteraction(item))
@@ -28,7 +27,6 @@ namespace Rokolabs.AutomationTestingTask.Rest.Controllers.v3
 		[HttpGet]
 		public IHttpActionResult Get(int id, string sessionId)
 		{
-			DelayHelper.NormalDelay();
 			var repository = EventRepositoryCache.Instance.Get(sessionId.ToGuidWithAccessDenied());
 			var item = repository.GetById(id);
 			if (item != null)
@@ -37,7 +35,6 @@ namespace Rokolabs.AutomationTestingTask.Rest.Controllers.v3
 				{
 					return Ok(item);
 				}
-				DelayHelper.UnacceptableLongDelay();
 				return NotFound();
 			}
 			return NotFound();
@@ -46,7 +43,6 @@ namespace Rokolabs.AutomationTestingTask.Rest.Controllers.v3
 		[HttpGet]
 		public IHttpActionResult Get(string sessionId)
 		{
-			DelayHelper.NormalDelay();
 			var repository = EventRepositoryCache.Instance.Get(sessionId.ToGuidWithAccessDenied());
 			var items = repository.GetAll().Where(e => !repository.IsInteraction(e));
 			return Ok(new EventList(items.ToList()));
@@ -55,7 +51,6 @@ namespace Rokolabs.AutomationTestingTask.Rest.Controllers.v3
 		[HttpPost]
 		public IHttpActionResult Post(string sessionId, [FromBody] Event value)
 		{
-			DelayHelper.NormalDelay();
 			var repository = EventRepositoryCache.Instance.Get(sessionId.ToGuidWithAccessDenied());
 			var validationResult = EventValidator.ValidateV3Create(value, false);
 			if (!string.IsNullOrWhiteSpace(validationResult))
@@ -70,7 +65,6 @@ namespace Rokolabs.AutomationTestingTask.Rest.Controllers.v3
 		[HttpPut]
 		public IHttpActionResult Put(int id, string sessionId, [FromBody] Event value)
 		{
-			DelayHelper.UnacceptableLongDelay();
 			var repository = EventRepositoryCache.Instance.Get(sessionId.ToGuidWithAccessDenied());
 			var validationResult = EventValidator.ValidateV3Update(value, false);
 			if (!string.IsNullOrWhiteSpace(validationResult))

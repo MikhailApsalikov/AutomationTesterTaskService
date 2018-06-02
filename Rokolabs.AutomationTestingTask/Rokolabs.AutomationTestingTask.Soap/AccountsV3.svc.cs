@@ -16,10 +16,6 @@ namespace Rokolabs.AutomationTestingTask.Soap
 		{
 			login.ThrowIfEmpty(nameof(login));
 			password.ThrowIfEmpty(nameof(password));
-			if (login.Length > 50) // Не исправленный баг 1
-			{
-				throw new ArgumentException("Login is incorrect");
-			}
 			var account = AccountRepository.Get(login, password);
 			account.SessionUserId = Guid.NewGuid();
 			AccountRepository.Update(account);
