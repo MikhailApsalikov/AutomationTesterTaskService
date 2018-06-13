@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.Core;
 using System.Linq;
@@ -32,6 +33,15 @@ namespace Rokolabs.AutomationTestingTask.Repositories
 		public Account Get(string login)
 		{
 			return DbContext.Accounts.FirstOrDefault(a => a.Login == login);
+		}
+
+		public List<Account> Get(int page, int pageSize)
+		{
+			return DbContext.Accounts
+				.OrderBy(s=>s.Id)
+				.Skip(pageSize*(page-1))
+				.Take(pageSize)
+				.ToList();
 		}
 
 		public Account Get(string login, string password)
