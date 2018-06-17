@@ -106,7 +106,7 @@ namespace Rokolabs.AutomationTestingTask.Soap
 			{
 				throw new ArgumentException("Login should have not have more than 255 symbols");
 			}
-			if (!Regex.IsMatch(login, @"^[A-zА-яЁё0-9@.,\-_]*$"))
+			if (!Regex.IsMatch(login, @"^[A-Za-zА-яЁё0-9@.,\-_]*$"))
 			{
 				throw new ArgumentException("Login should have only letters, digits and one of the following symbols: . , @ - _");
 			}
