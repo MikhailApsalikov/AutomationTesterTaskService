@@ -119,10 +119,6 @@ namespace Rokolabs.AutomationTestingTask.Soap
 			result[3] = password.ToCharArray().Any(Char.IsUpper);
 			result[4] = password.ToCharArray().Any(c => c == '©');
 			var count = result.Count(s => s);
-			if (count == 2 && result[1] && result[2])
-			{
-				return; // Вновь появившися баг 1
-			}
 			if (count < 3)
 			{
 				throw new ArgumentException("Password should satisfy at least 3 conditions");
